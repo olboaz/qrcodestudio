@@ -113,6 +113,7 @@ body {
 @media screen and (max-width: 768px) {
   .container {
     justify-content: normal;
+    padding: 2rem;
   }
   .wrapper {
     flex-direction: column;
@@ -151,7 +152,9 @@ body {
       width: 150px!important;
     }
   }
-  
+  footer {
+    top: 0;
+  }
   /* canvas {
     width: 150px;
     height: 150px;

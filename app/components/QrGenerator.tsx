@@ -204,9 +204,9 @@ export default function QrGenerator() {
         <p>Veuillez entrer une URL avant de télécharger le QR Code.</p>
       </div>
       {/* Footer */}
-      <p className="absolute bottom-4 right-4 text-gray-600 text-sm">
+      <footer className="absolute bottom-4 right-4 text-gray-600 text-sm">
         Made with ❤️ by <Link  target="_blank" href="https://www.pjaszczynski.fr/" className="gradient-text">PJ</Link>
-      </p>
+      </footer>
     </div>
   );
 }
