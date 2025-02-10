@@ -14,6 +14,7 @@ export default function QrGenerator() {
 
   const logos = [
     { name: "No Logo", src: null },
+    { name: "Ludothèque", src: "/logos/ludotheque.png" },
     { name: "Facebook", src: "/logos/icons8-facebook-48.png" },
     { name: "Instagram", src: "/logos/icons8-instagram-48.png" },
     { name: "LinkedIn", src: "/logos/icons8-linkedin-48.png" },
