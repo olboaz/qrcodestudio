@@ -38,8 +38,8 @@ export default function QrGenerator() {
         height: 220,
         data: url,
         image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined),
-        dotsOptions: { color: "#000", type: "rounded" },
         imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 },
+        dotsOptions: { color: "#000", type: "rounded" }
       });
     }
     if (qrRef.current) {
@@ -50,7 +50,7 @@ export default function QrGenerator() {
 
   useEffect(() => {
     if (qrCode.current) {
-      qrCode.current.update({ data: url, image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined)
+      qrCode.current.update({ data: url, image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined), imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
     });
     }
   }, [url, selectedLogo, uploadedLogo]);
@@ -85,8 +85,8 @@ export default function QrGenerator() {
       height: size,
       data: url,
       image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined),
-      dotsOptions: { color: "#000", type: "rounded" },
-      imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
+      imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 },
+      dotsOptions: { color: "#000", type: "rounded" }
     });
 
     qrCodeDownload.download({
@@ -132,7 +132,7 @@ export default function QrGenerator() {
           />
           <button
             onClick={() => setIsOptionsVisible(!isOptionsVisible)}
-            className="w-full bg-indigo-500 text-white py-2 rounded-lg mb-4 hover:bg-indigo-600 transition font-bold py-2 px-4 rounded inline-flex items-center justify-center"
+            className="w-full bg-indigo-500 text-white rounded-lg mb-4 hover:bg-indigo-600 transition font-bold py-2 px-4 inline-flex items-center justify-center"
           >
             {isOptionsVisible ? "Hide Logo Options " : "Show Logo Options"}
           </button>
