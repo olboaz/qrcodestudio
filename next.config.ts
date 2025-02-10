@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
   images: { unoptimized: true },
-  basePath: "/qrcodestudio"
+  basePath: process.env.NODE_ENV === 'production' ? '/qrcodestudio' : '',
 };
 
 export default nextConfig;

@@ -15,13 +15,13 @@ export default function QrGenerator() {
 
   const logos = [
     { name: "No Logo", src: null },
-    { name: "Ludothèque", src: "/logos/ludotheque.png" },
-    { name: "Facebook", src: "/logos/icons8-facebook-48.png" },
-    { name: "Instagram", src: "/logos/icons8-instagram-48.png" },
-    { name: "LinkedIn", src: "/logos/icons8-linkedin-48.png" },
-    { name: "TikTok", src: "/logos/icons8-tiktok-48.png" },
-    { name: "Twitter", src: "/logos/icons8-twitter-48.png" },
-    { name: "YouTube", src: "/logos/icons8-youtube-48.png" }
+    { name: "Ludothèque", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/ludotheque.png` : "/logos/ludotheque.png" },
+    { name: "Facebook", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-facebook-48.png` : "/logos/icons8-facebook-48.png" },
+    { name: "Instagram", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-instagram-48.png` : "/logos/icons8-instagram-48.png" },
+    { name: "LinkedIn", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-linkedin-48.png` : "/logos/icons8-linkedin-48.png" },
+    { name: "TikTok", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-tiktok-48.png` : "/logos/icons8-tiktok-48.png" },
+    { name: "Twitter", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-twitter-48.png` : "/logos/icons8-twitter-48.png" },
+    { name: "YouTube", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-youtube-48.png` : "/logos/icons8-youtube-48.png" }
   ];
 
   interface Logo {
@@ -35,7 +35,7 @@ export default function QrGenerator() {
         width: 220, // Taille d'affichage
         height: 220,
         data: url,
-        image: uploadedLogo ?? selectedLogo?.src ?? undefined,
+        image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined),
         dotsOptions: { color: "#000", type: "rounded" },
         imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 },
       });
@@ -48,7 +48,8 @@ export default function QrGenerator() {
 
   useEffect(() => {
     if (qrCode.current) {
-      qrCode.current.update({ data: url, image: uploadedLogo ?? selectedLogo?.src ?? undefined });
+      qrCode.current.update({ data: url, image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined)
+    });
     }
   }, [url, selectedLogo, uploadedLogo]);
   
@@ -81,7 +82,7 @@ export default function QrGenerator() {
       width: size,
       height: size,
       data: url,
-      image: uploadedLogo ?? selectedLogo?.src ?? undefined,
+      image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined),
       dotsOptions: { color: "#000", type: "rounded" },
       imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
     });
