@@ -100,7 +100,7 @@ export default function QrGenerator() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-violet-100 p-4 relative">
+    <div className="container flex flex-col items-center justify-center min-h-screen bg-violet-100 p-4 relative">
       <h1 className="text-7xl font-extrabold text-violet-700 relative mb-[60px]">
         <span className="relative z-10 bg-gradient-to-r from-cyan-500 to-pink-500 bg-clip-text text-transparent">
           QR Code Studio
@@ -112,9 +112,9 @@ export default function QrGenerator() {
         </div>
       </h1>
 
-      <div className="flex gap-6 w-full max-w-4xl">
+      <div className="wrapper flex gap-6 w-full max-w-4xl">
         {/* Première carte : Entrée URL & Options */}
-        <div className="bg-white p-6 rounded-xl shadow-lg w-1/2">
+        <div className="bg-white p-6 rounded-xl shadow-lg w-1/2 card">
           <input
             type="text"
             value={url}
@@ -142,15 +142,15 @@ export default function QrGenerator() {
           </button>
 
           {isOptionsVisible && (
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4 logos">
               {/* Logos à gauche */}
-              <div className="flex flex-wrap gap-2 w-3/4 border-r-4 border-gray-200">
+              <div className="flex flex-wrap gap-2 w-3/4 border-r-4 border-gray-200 logo-cards">
                 {logos.map((logo) => (
                   <div
                     key={logo.name}
                     onClick={() => handleLogoSelect(logo)}
-                    className={`w-16 h-16 flex items-center justify-center cursor-pointer rounded-lg border-4 bg-[#f1f0f0] transition ${
-                      selectedLogo?.name === logo.name ? "border-violet-500" : "border-transparent"
+                    className={`w-16 h-16 flex items-center justify-center cursor-pointer rounded-lg border-4 logo-card bg-[#f1f0f0] transition ${
+                      selectedLogo?.name === logo.name ? "border-violet-500" : "border-transparent" 
                     }`}
                   >
                     {logo.src ? (
@@ -178,8 +178,8 @@ export default function QrGenerator() {
         </div>
 
         {/* Deuxième carte : QR Code & Téléchargement */}
-        <div className="bg-white p-6 rounded-xl shadow-lg w-1/2 flex flex-col items-center justify-center">
-          <div ref={qrRef} className="relative w-[220px] h-[220px] bg-gray-200 rounded-lg mb-4"></div>
+        <div className="bg-white p-6 rounded-xl shadow-lg w-1/2 flex flex-col items-center justify-center card">
+          <div ref={qrRef} className="relative w-[220px] h-[220px] bg-gray-200 rounded-lg mb-4 canva-content"></div>
           <button
             onClick={handleDownload}
             className="w-full bg-violet-600 text-white font-bold py-2 px-4 rounded inline-flex items-center hover:bg-violet-700 transition justify-center"
