@@ -72,3 +72,36 @@ body {
   99.99% {margin-top: 0px;}
   100% {margin-top: -270px;}
 }
+
+.gradient-text {
+  font-family: 'Great Vibes', cursive;
+  font-weight: bold;
+  font-style: italic;
+  font-size: large;
+  font-size: 35px;
+  background: linear-gradient(
+    90deg,
+    #ff0080,
+    #ff8c00,
+    #40e0d0,
+    #8a2be2,
+    #ff0090
+  );
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 500% 500%;
+  animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
