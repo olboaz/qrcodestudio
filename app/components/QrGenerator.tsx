@@ -37,7 +37,7 @@ export default function QrGenerator() {
         width: 220, // Taille d'affichage
         height: 220,
         data: url,
-        image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined),
+        image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined),
         dotsOptions: { color: "#000", type: "rounded" },
         imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 },
       });
@@ -50,7 +50,7 @@ export default function QrGenerator() {
 
   useEffect(() => {
     if (qrCode.current) {
-      qrCode.current.update({ data: url, image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined)
+      qrCode.current.update({ data: url, image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined)
     });
     }
   }, [url, selectedLogo, uploadedLogo]);
@@ -84,7 +84,7 @@ export default function QrGenerator() {
       width: size,
       height: size,
       data: url,
-      image: uploadedLogo ?? (selectedLogo?.src ? `${process.env.NEXT_PUBLIC_BASE_PATH}${selectedLogo.src}` : undefined),
+      image: uploadedLogo ?? (selectedLogo?.src ? `${basePath}${selectedLogo.src}` : undefined),
       dotsOptions: { color: "#000", type: "rounded" },
       imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
     });
