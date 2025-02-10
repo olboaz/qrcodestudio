@@ -4,7 +4,9 @@
     /* config options here */
     output: 'export',
     images: { unoptimized: true },
-    basePath: "/qrcodestudio"
+    basePath: "/qrcodestudio",
+    assetPrefix: "/qrcodestudio",
+    trailingSlash: true,
   };
 
   export default nextConfig;
