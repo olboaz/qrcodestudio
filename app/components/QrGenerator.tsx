@@ -17,13 +17,13 @@ export default function QrGenerator() {
 
   const logos = [
     { name: "No Logo", src: null },
-    { name: "Ludothèque", src: `${basePath}/logos/ludotheque.png` },
-    { name: "Facebook", src: `${basePath}/logos/icons8-facebook-48.png` },
-    { name: "Instagram", src: `${basePath}/logos/icons8-instagram-48.png` },
-    { name: "LinkedIn", src: `${basePath}/logos/icons8-linkedin-48.png` },
-    { name: "TikTok", src: `${basePath}/logos/icons8-tiktok-48.png` },
-    { name: "Twitter", src: `${basePath}/logos/icons8-twitter-48.png` },
-    { name: "YouTube", src: `${basePath}/logos/icons8-youtube-48.png` }
+    { name: "Ludothèque", src: "/logos/ludotheque.png" },
+    { name: "Facebook", src: "/logos/icons8-facebook-48.png" },
+    { name: "Instagram", src: "/logos/icons8-instagram-48.png" },
+    { name: "LinkedIn", src: "/logos/icons8-linkedin-48.png" },
+    { name: "TikTok", src: "/logos/icons8-tiktok-48.png" },
+    { name: "Twitter", src: "/logos/icons8-twitter-48.png" },
+    { name: "YouTube", src: "/logos/icons8-youtube-48.png" }
   ];
 
   interface Logo {
