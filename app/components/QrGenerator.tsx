@@ -6,9 +6,10 @@ export default function QrGenerator() {
   const [url, setUrl] = useState("");
   const [size, setSize] = useState(300);
   const qrRef = useRef(null);
-  const qrCode = useRef(null);
-  const [selectedLogo, setSelectedLogo] = useState(null);
-  const [uploadedLogo, setUploadedLogo] = useState(null);
+  const qrCode = useRef<QRCodeStyling | null>(null);
+  const [selectedLogo, setSelectedLogo] = useState<{ name: string; src: string | null } | null>(null);
+  const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
+
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
 
@@ -23,34 +24,46 @@ export default function QrGenerator() {
     { name: "YouTube", src: "/logos/icons8-youtube-48.png" }
   ];
 
-  useEffect(() => {
-    qrCode.current = new QRCodeStyling({
-      width: 220, // Affichage fixe
-      height: 220,
-      data: url,
-      image: uploadedLogo || selectedLogo?.src,
-      dotsOptions: { color: "#000", type: "rounded" },
-      imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
-    });
+  interface Logo {
+    name: string;
+    src: string | null;
+  }
 
-    qrCode.current.append(qrRef.current);
+  useEffect(() => {
+    if (!qrCode.current) {
+      qrCode.current = new QRCodeStyling({
+        width: 220, // Taille d'affichage
+        height: 220,
+        data: url,
+        image: uploadedLogo ?? selectedLogo?.src ?? undefined,
+        dotsOptions: { color: "#000", type: "rounded" },
+        imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 },
+      });
+    }
+    if (qrRef.current) {
+      qrCode.current.append(qrRef.current);
+    }
+    
   }, []);
 
   useEffect(() => {
-    qrCode.current.update({ data: url, image: uploadedLogo || selectedLogo?.src });
+    if (qrCode.current) {
+      qrCode.current.update({ data: url, image: uploadedLogo ?? selectedLogo?.src ?? undefined });
+    }
   }, [url, selectedLogo, uploadedLogo]);
+  
 
-  const handleLogoSelect = (logo) => {
+  const handleLogoSelect = (logo: Logo) => {
     setSelectedLogo(logo);
     setUploadedLogo(null);
   };
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setUploadedLogo(e.target.result);
+        setUploadedLogo(e.target?.result as string);
         setSelectedLogo(null);
       };
       reader.readAsDataURL(file);
@@ -68,7 +81,7 @@ export default function QrGenerator() {
       width: size,
       height: size,
       data: url,
-      image: uploadedLogo || selectedLogo?.src,
+      image: uploadedLogo ?? selectedLogo?.src ?? undefined,
       dotsOptions: { color: "#000", type: "rounded" },
       imageOptions: { crossOrigin: "anonymous", margin: 0, imageSize: 0.3 }
     });
