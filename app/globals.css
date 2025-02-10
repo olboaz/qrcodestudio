@@ -120,8 +120,14 @@ body {
       width: 100%;
     }
   }
+  input:focus {
+    color: black; /* Garde le texte bien visible lorsqu'on écrit */
+  }
   .card {
-    padding: 1rem;
+    padding: 0.8rem;
+  }
+  .card:last-child {
+    margin-bottom: 20px;
   }
   .logos {
     flex-direction: column;
@@ -140,6 +146,10 @@ body {
   .canva-content {
     display: flex;
     justify-content: center;
+    height: 150px;
+    canvas {
+      width: 150px!important;
+    }
   }
   
   /* canvas {
@@ -149,7 +159,7 @@ body {
   h1 {
     text-align: center;
     font-size: 2rem!important;
-    margin-bottom: 20px!important;
+    margin-bottom: 15px!important;
   }
   .flip {
     margin-top: 10px;
