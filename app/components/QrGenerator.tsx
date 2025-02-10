@@ -13,15 +13,17 @@ export default function QrGenerator() {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
 
+  const basePath = process.env.NODE_ENV === 'production' ? '/qrcodestudio' : '';
+
   const logos = [
     { name: "No Logo", src: null },
-    { name: "Ludothèque", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/ludotheque.png` : "/logos/ludotheque.png" },
-    { name: "Facebook", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-facebook-48.png` : "/logos/icons8-facebook-48.png" },
-    { name: "Instagram", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-instagram-48.png` : "/logos/icons8-instagram-48.png" },
-    { name: "LinkedIn", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-linkedin-48.png` : "/logos/icons8-linkedin-48.png" },
-    { name: "TikTok", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-tiktok-48.png` : "/logos/icons8-tiktok-48.png" },
-    { name: "Twitter", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-twitter-48.png` : "/logos/icons8-twitter-48.png" },
-    { name: "YouTube", src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logos/icons8-youtube-48.png` : "/logos/icons8-youtube-48.png" }
+    { name: "Ludothèque", src: `${basePath}/logos/ludotheque.png` },
+    { name: "Facebook", src: `${basePath}/logos/icons8-facebook-48.png` },
+    { name: "Instagram", src: `${basePath}/logos/icons8-instagram-48.png` },
+    { name: "LinkedIn", src: `${basePath}/logos/icons8-linkedin-48.png` },
+    { name: "TikTok", src: `${basePath}/logos/icons8-tiktok-48.png` },
+    { name: "Twitter", src: `${basePath}/logos/icons8-twitter-48.png` },
+    { name: "YouTube", src: `${basePath}/logos/icons8-youtube-48.png` }
   ];
 
   interface Logo {
